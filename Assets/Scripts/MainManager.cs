@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
 {
+    public string nameHolder;
     public Brick BrickPrefab;
     public int LineCount = 6;
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text BestTextSN;
     public GameObject GameOverText;
     
     private bool m_Started = false;
@@ -22,6 +24,10 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        Save.Instance.LoadScore();
+      
+        Debug.Log("N" + Save.Instance.Name + "  Score: " + Save.Instance.Score);
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -40,8 +46,25 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
+        /*
+        if (Save.Instance.Score < m_Points)
+        {
+            Save.Instance.Name = Save.Instance.nameHolder;
+            BestTextSN.text = Save.Instance.Name + " : " + Save.Instance.Score;
+            Save.Instance.Score = m_Points;
+
+
+        }
+        */
         if (!m_Started)
         {
+            // if (Save.Instance.Score < m_Points)
+            //   {
+            //     BestTextSN.text = Save.Instance.Name + " : " + Save.Instance.Score;
+            // }
+            BestTextSN.text = Save.Instance.Name + " : " + Save.Instance.Score;
+        
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 m_Started = true;
@@ -67,9 +90,24 @@ public class MainManager : MonoBehaviour
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
     }
-
+/*
+    public void PassName(string name)
+    {
+        nameHolder = name;
+    }
+    */
     public void GameOver()
     {
+        //  Save.Instance.Name = nameHolder;
+        if (Save.Instance.Score < m_Points)
+        {
+            BestTextSN.text = Save.Instance.Name + " : " + Save.Instance.Score;
+            Save.Instance.Score = m_Points;
+            Save.Instance.Name = Save.Instance.nameHolder;
+            Save.Instance.SaveScore();
+        }
+       
+        
         m_GameOver = true;
         GameOverText.SetActive(true);
     }
