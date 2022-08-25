@@ -101,9 +101,11 @@ public class MainManager : MonoBehaviour
         //  Save.Instance.Name = nameHolder;
         if (Save.Instance.Score < m_Points)
         {
-            BestTextSN.text = Save.Instance.Name + " : " + Save.Instance.Score;
             Save.Instance.Score = m_Points;
             Save.Instance.Name = Save.Instance.nameHolder;
+
+            BestTextSN.text = Save.Instance.Name + " : " + Save.Instance.Score;
+          
             Save.Instance.SaveScore();
         }
        

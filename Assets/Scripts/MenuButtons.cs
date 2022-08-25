@@ -14,13 +14,16 @@ public class MenuButtons : MonoBehaviour
 {
    // public TextMeshPro inputField;
     public TMP_InputField inputField;
+    public TMP_Text bestScoreText;
     public Button startButton, quitButton;
     public string nameHolder;
     GameObject MainManag;
 
     void Start()
     {
-       // MainManag = GameObject.Find("MainManager");
+        // MainManag = GameObject.Find("MainManager");
+        Save.Instance.LoadScore();
+        bestScoreText.text = "Best Score : " + Save.Instance.Name + " : " + Save.Instance.Score ;
     }
 
     public void StartButtonClikced()
