@@ -21,28 +21,15 @@ public class MenuButtons : MonoBehaviour
 
     void Start()
     {
-        // MainManag = GameObject.Find("MainManager");
         Save.Instance.LoadScore();
         bestScoreText.text = "Best Score : " + Save.Instance.Name + " : " + Save.Instance.Score ;
     }
 
     public void StartButtonClikced()
     {
-       /* Debug.Log("i" + inputField.text);
-        Save.Instance.LoadScore();
-        if (Save.Instance.Name == inputField.ToString())
-        {
-            Save.Instance.LoadScore();
-        }
-        else
-        {
-            Save.Instance.Name = inputField.text.ToString();
-        }
-        */
+
         Save.Instance.nameHolder = inputField.text.ToString();
       
-        
-       // MainManag.GetComponent<MainManager>().PassName(inputField.text.ToString());
         SceneManager.LoadScene(1);
         
     }

@@ -46,22 +46,10 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
-        /*
-        if (Save.Instance.Score < m_Points)
-        {
-            Save.Instance.Name = Save.Instance.nameHolder;
-            BestTextSN.text = Save.Instance.Name + " : " + Save.Instance.Score;
-            Save.Instance.Score = m_Points;
-
-
-        }
-        */
+   
         if (!m_Started)
         {
-            // if (Save.Instance.Score < m_Points)
-            //   {
-            //     BestTextSN.text = Save.Instance.Name + " : " + Save.Instance.Score;
-            // }
+       
             BestTextSN.text = Save.Instance.Name + " : " + Save.Instance.Score;
         
 
@@ -90,15 +78,10 @@ public class MainManager : MonoBehaviour
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
     }
-/*
-    public void PassName(string name)
-    {
-        nameHolder = name;
-    }
-    */
+
     public void GameOver()
     {
-        //  Save.Instance.Name = nameHolder;
+     
         if (Save.Instance.Score < m_Points)
         {
             Save.Instance.Score = m_Points;

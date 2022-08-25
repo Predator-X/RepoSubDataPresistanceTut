@@ -21,11 +21,7 @@ public class Save : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    [System.Serializable]
-   public class PlayerList
-    {
-        SaveData[] PlayersData;
-    }
+ 
 
 
     [System.Serializable]
@@ -43,11 +39,8 @@ public class Save : MonoBehaviour
         data.Name = Name;
         data.Score  = Score;
            
-
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json",json);
-
- 
 }
 
  
@@ -67,10 +60,5 @@ public class Save : MonoBehaviour
 
 
 
-    public void SaveToPlayersData()
-    {
-        PlayerList playerList = new PlayerList();
-
-    }
 
 }
